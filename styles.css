@@ -1,0 +1,127 @@
+:root {
+  --bg: #f7f9fc;
+  --card: #ffffff;
+  --text: #1f2937;
+  --muted: #6b7280;
+  --accent: #2563eb;
+  --danger: #ef4444;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: Inter, system-ui, sans-serif;
+  background: radial-gradient(circle at top, #dbeafe 0%, #f8fafc 45%, #f7f9fc 100%);
+  color: var(--text);
+  display: grid;
+  place-items: center;
+}
+
+.todo-app {
+  width: min(600px, calc(100% - 2rem));
+  padding: 2rem;
+  border-radius: 1.25rem;
+  background: var(--card);
+  box-shadow: 0 24px 80px rgba(15, 23, 42, 0.08);
+}
+
+h1 {
+  margin: 0 0 1.5rem;
+  font-size: clamp(2rem, 3vw, 2.5rem);
+  text-align: center;
+}
+
+.todo-form {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 0.75rem;
+  margin-bottom: 1.5rem;
+}
+
+.todo-form input {
+  width: 100%;
+  padding: 0.95rem 1rem;
+  border: 1px solid #d1d5db;
+  border-radius: 0.85rem;
+  font-size: 1rem;
+}
+
+.todo-form button {
+  padding: 0.95rem 1.25rem;
+  border: none;
+  border-radius: 0.85rem;
+  font-size: 1rem;
+  font-weight: 600;
+  color: white;
+  background: var(--accent);
+  cursor: pointer;
+}
+
+.todo-form button:hover {
+  background: #1d4ed8;
+}
+
+.todo-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 0.75rem;
+}
+
+.todo-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1rem 1.25rem;
+  background: #f8fafc;
+  border: 1px solid #e5e7eb;
+  border-radius: 0.95rem;
+  cursor: pointer;
+}
+
+.todo-checkbox {
+  flex-shrink: 0;
+  width: 1.1rem;
+  height: 1.1rem;
+  cursor: pointer;
+}
+
+.todo-text {
+  margin: 0;
+  word-break: break-word;
+  color: var(--text);
+  cursor: pointer;
+}
+
+.todo-text.completed {
+  text-decoration: line-through;
+  color: #6b7280;
+}
+
+.delete-button {
+  border: none;
+  border-radius: 0.75rem;
+  padding: 0.6rem 0.85rem;
+  color: white;
+  background: var(--danger);
+  cursor: pointer;
+}
+
+.delete-button:hover {
+  background: #dc2626;
+}
+
+.empty-state {
+  margin: 0;
+  padding: 1rem 1.25rem;
+  border-radius: 0.95rem;
+  background: #eef2ff;
+  color: var(--muted);
+  text-align: center;
+}
