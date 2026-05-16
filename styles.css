@@ -7,6 +7,15 @@
   --danger: #ef4444;
 }
 
+[data-theme="dark"] {
+  --bg: #1f2937;
+  --card: #111827;
+  --text: #f3f4f6;
+  --muted: #9ca3af;
+  --accent: #3b82f6;
+  --danger: #f87171;
+}
+
 * {
   box-sizing: border-box;
 }
@@ -19,6 +28,11 @@ body {
   color: var(--text);
   display: grid;
   place-items: center;
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+[data-theme="dark"] body {
+  background: radial-gradient(circle at top, #1e3a5f 0%, #111827 45%, #0f172a 100%);
 }
 
 .todo-app {
@@ -27,12 +41,46 @@ body {
   border-radius: 1.25rem;
   background: var(--card);
   box-shadow: 0 24px 80px rgba(15, 23, 42, 0.08);
+  transition: background 0.3s ease, box-shadow 0.3s ease;
+}
+
+[data-theme="dark"] .todo-app {
+  box-shadow: 0 24px 80px rgba(0, 0, 0, 0.3);
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
 }
 
 h1 {
-  margin: 0 0 1.5rem;
+  margin: 0;
   font-size: clamp(2rem, 3vw, 2.5rem);
   text-align: center;
+  flex: 1;
+}
+
+.theme-toggle {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  padding: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0.5rem;
+  transition: background 0.3s ease;
+}
+
+.theme-toggle:hover {
+  background: rgba(37, 99, 235, 0.1);
+}
+
+[data-theme="dark"] .theme-toggle:hover {
+  background: rgba(59, 130, 246, 0.1);
 }
 
 .todo-form {
@@ -48,6 +96,13 @@ h1 {
   border: 1px solid #d1d5db;
   border-radius: 0.85rem;
   font-size: 1rem;
+  background: var(--card);
+  color: var(--text);
+  transition: background 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+
+[data-theme="dark"] .todo-form input {
+  border-color: #374151;
 }
 
 .todo-form button {
@@ -83,6 +138,12 @@ h1 {
   border: 1px solid #e5e7eb;
   border-radius: 0.95rem;
   cursor: pointer;
+  transition: background 0.3s ease, border-color 0.3s ease;
+}
+
+[data-theme="dark"] .todo-item {
+  background: #1f2937;
+  border-color: #374151;
 }
 
 .todo-checkbox {
@@ -124,4 +185,9 @@ h1 {
   background: #eef2ff;
   color: var(--muted);
   text-align: center;
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+[data-theme="dark"] .empty-state {
+  background: #1e3a5f;
 }

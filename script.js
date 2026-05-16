@@ -1,8 +1,34 @@
 const todoForm = document.getElementById('todo-form');
 const todoInput = document.getElementById('todo-input');
 const todoList = document.getElementById('todo-list');
+const themeToggle = document.getElementById('theme-toggle');
 
 const todos = [];
+
+const themeManager = {
+  init() {
+    const savedTheme = localStorage.getItem('theme') || 'light';
+    this.setTheme(savedTheme);
+    themeToggle.addEventListener('click', () => this.toggle());
+  },
+
+  setTheme(theme) {
+    document.documentElement.setAttribute('data-theme', theme);
+    localStorage.setItem('theme', theme);
+    this.updateToggleIcon(theme);
+  },
+
+  toggle() {
+    const currentTheme = document.documentElement.getAttribute('data-theme') || 'light';
+    const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+    this.setTheme(newTheme);
+  },
+
+  updateToggleIcon(theme) {
+    const icon = themeToggle.querySelector('.theme-icon');
+    icon.textContent = theme === 'dark' ? '☀️' : '🌙';
+  }
+};
 
 function renderTodos() {
   todoList.innerHTML = '';
@@ -71,3 +97,4 @@ todoForm.addEventListener('submit', event => {
 });
 
 renderTodos();
+themeManager.init();
